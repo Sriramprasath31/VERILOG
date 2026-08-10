@@ -1,8 +1,14 @@
-module mux_4to1(
-    input [3:0] i,
-    input [1:0] sel,
-    output y
-);
-assign y = (~sel[0]&~sel[1]&i[0]) | (sel[0]&~sel[1]&i[1]) | (~sel[0]&sel[1]&i[2]) | (sel[0]&sel[1]&i[3]);
-    
+module mux4to1(input [3:0]D,input [1:0]sel,
+               output reg y);
+
+    always@(*)begin
+      case(sel)
+          2'b00:y=D[0];
+          2'b01:y=D[1];
+          2'b10:y=D[2];
+          2'b11:y=D[3];
+      endcase
+    end
 endmodule
+                                     
+    
