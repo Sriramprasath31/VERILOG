@@ -1,28 +1,16 @@
-module mux_2to1_tb;
-    reg a,b,sel;
-    wire y;
-    integer i;
-
-    mux_2to1 uut(
-        .a(a),
-        .b(b),
-        .sel(sel),
-        .y(y)
-    );
-
-    initial begin
-        $dumpfile("dump.vcd");
-        $dumpvars(0,mux_2to1_tb);
-    end
-
-    initial begin
-        
-        $monitor("Time: %0t | a=%b, b=%b, sel=%b | y=%b", $time, a, b, sel, y);
-        a=0; b=0; sel=0;
-        for(i=0; i<4; i=i+1) begin
-            {a,b,sel} = i;
-            #10;
-        end
-        $finish;
-    end
-endmodule
+module mux2to1_tb;
+  
+  reg D0,D1,sel;
+  wire y;
+  
+  mux2to1 DUT(.D0(D0),.D1(D1),.sel(sel),.y(y));
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0,mux2to1_tb );
+    $monitor("sel=%b | D0=%b | D1=%b | Y=%b ",sel,D0,D1,y);
+    D0=0; D1=1; #10
+    sel=0; #5;
+    sel=1; #5;
+    $finish;
+  end
+endmodule 
