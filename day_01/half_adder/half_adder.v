@@ -1,11 +1,8 @@
 module half_adder(
-    input a,
-    input b,
-    output sum,
-    output cout
+    input a, b,
+    output s, c
 );
 
-    assign sum = a ^ b ;
-    assign cout = a & b ;
-
+        assign s = a^b;
+        assign c = a&b;
 endmodule
