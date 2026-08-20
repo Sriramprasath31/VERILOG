@@ -1,0 +1,13 @@
+module updown_count(input clk,rst,updown_count,output reg [3:0]count);
+
+    always @(posedge clk)begin
+      
+      if(rst)
+            count<=4'b0000;
+      else if(updown_count)
+            count<=count+1'b1;
+      else
+            count<=count-1'b1;
+
+    end
+endmodule
