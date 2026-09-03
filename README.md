@@ -1,0 +1,1 @@
+Verilog Daily Practices codes
